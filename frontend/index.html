@@ -1,28 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-</head>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<body>
+  <body>
     <h1>ttt</h1>
 
     <div class="backend-version"></div>
 
+    <script src="config.js"></script>
     <script>
-        const API_ROOT = 'http://localhost:8000/api/';
-        updateVersion();
-        async function updateVersion() {
-            const r = await fetch(API_ROOT + 'version');
-            const version = await r.json();
-            const backendVersion = document.querySelector('.backend-version');
-            backendVersion.textContent = `${version.major}.${version.minor}.${version.build}`;
+      updateVersion();
+      async function updateVersion() {
+        const r = await tryFetch(CONFIG.API_ROOT + "version");
+        if (!r) {
+          return;
         }
-    </script>
-</body>
+        const version = await r.json();
+        const backendVersion = document.querySelector(".backend-version");
+        backendVersion.textContent = `${version.major}.${version.minor}.${version.build}`;
+      }
 
+      async function tryFetch(url) {
+        try {
+          return await fetch(url);
+        } catch (ex) {
+          alert(`fetch ${url} failed`);
+          return null;
+        }
+      }
+    </script>
+  </body>
 </html>
