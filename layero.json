@@ -1,14 +1,16 @@
 {
+  "version": 1,
   "type": "fullstack",
   "frontend": {
     "dir": "frontend",
-    "install_cmd": "",
-    "build_cmd": "",
-    "output_dir": "."
+    "framework": "static",
+    "install": false,
+    "build": false,
+    "output": "."
   },
   "backend": {
     "dir": "backend",
     "framework": "express",
-    "start_cmd": "node server.js"
+    "start": "node server.js"
   }
 }
