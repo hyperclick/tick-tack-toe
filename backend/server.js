@@ -12,6 +12,9 @@ const isLocal = process.env.NODE_ENV === "local";
 if (isLocal) {
   app.use(cors());
 }
+// проверочный робот Layero получит внятный JSON-ответ, и предупреждение исчезнет
+app.get("/api/", (req, res) => res.json({ status: "API is working" }));
+
 app.get("/api/version", (req, res) =>
   res.json({ major: 0, minor: 1, build: 3 }),
 );
