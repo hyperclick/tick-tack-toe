@@ -2,8 +2,22 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-console.log({ env: process.env.NODE_ENV, port: process.env.PORT, LAYERO_START : process.env.LAYERO_START  });
+const fs = require('fs');
+
 console.log('Текущая рабочая директория (CWD):', process.cwd());
+
+try {
+  // Читаем список файлов и папок в текущей директории
+  const files = fs.readdirSync(process.cwd());
+  console.log('Список файлов в CWD:', files);
+} catch (err) {
+  console.error('Не удалось прочитать директорию:', err.message);
+}
+
+
+console.log({ env: process.env.NODE_ENV, port: process.env.PORT, LAYERO_START : process.env.LAYERO_START  });
+
+
 
 const PORT = process.env.PORT || 3000;
 
