@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
+  "name": "tick-tack-toe-frontend",
+  "description": "layero fails withou this",
   "version": "1.0.0",
-  "description": "dummy file to build in layero",
   "scripts": {
     "build": "echo 'No build needed'"
   }
