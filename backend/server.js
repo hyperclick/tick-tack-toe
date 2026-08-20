@@ -2,9 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 3000;
-console.log({env:process.env.NODE_ENV});
+console.log({ env: process.env.NODE_ENV, port: process.env.POR });
 
+console.debug('test debug')
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
